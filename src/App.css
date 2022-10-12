@@ -331,7 +331,7 @@ html .clear-completed:active {
 }
 
 .clear-completed:hover {
-  text-decoration: underline;
+  text-decoration: underline rgba(175, 47, 47, 0.2);
 }
 
 .info {
