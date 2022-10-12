@@ -1,11 +1,8 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import classNames from "classnames";
+
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  clearCompleted,
-  setVisibilityFilter,
-} from "../redux/actions/todoActions";
+import { useDispatch } from "react-redux";
+import { clearCompleted } from "../redux/actions/todoActions";
 import {
   SHOW_ACTIVE,
   SHOW_ALL,

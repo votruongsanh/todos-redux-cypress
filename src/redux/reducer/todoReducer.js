@@ -5,9 +5,7 @@ import {
   COMPLETE_TODO,
   DELETE_TODO,
   EDIT_TODO,
-  SET_VISIBILITY_FILTER,
 } from "../contants/actionTypes";
-import { SHOW_ACTIVE, SHOW_ALL, SHOW_COMPLETED } from "../contants/TodoFilter";
 
 const initialState = {
   todos: [],
