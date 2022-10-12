@@ -134,5 +134,50 @@ describe("TodoMVC - React", () => {
       cy.get("@firstTodo").should("not.have.class", "completed");
       cy.get("@secondTodo").should("not.have.class", "completed");
     });
+
+    it("show allow me to edit an item", () => {
+      const secondTodo = "buy some sausages";
+
+      cy.createDefaultTodos().as("todos");
+
+      cy.get("@todos").eq(1).as("secondTodo").find("label").dblclick();
+      //clear out the inputs current value and type a new value
+      cy.get("@secondTodo")
+        .find(".edit")
+        .clear()
+        .type(secondTodo)
+        .type("{enter}");
+
+      cy.get("@todos").eq(0).should("contain", TODO_ITEM_ONE);
+      cy.get("@secondTodo").should("contain", secondTodo);
+      cy.get("@todos").eq(2).should("contain", TODO_ITEM_THREE);
+    });
+
+    it("should delete item", () => {
+      cy.createDefaultTodos().as("todos");
+      //the destroy element onle becomes visible on hover
+      cy.get("@todos").eq(1).find(".destroy").click({ force: true });
+
+      cy.get("@todos").should("have.length", 2);
+      cy.get("@todos").eq(0).should("contain", TODO_ITEM_ONE);
+      cy.get("@todos").eq(1).should("contain", TODO_ITEM_THREE);
+    });
   });
+
+  context("Counter", () => {
+    it("should display the current number of todo items", () => {
+      cy.createTodo(TODO_ITEM_ONE);
+      cy.get(".todo-count").contains("1 item left");
+      cy.createTodo(TODO_ITEM_TWO);
+      cy.get(".todo-count").contains("2 items left");
+    });
+  });
+});
+
+context("Mark all as completed", () => {
+  //new command used here
+  const completeAll = () => {
+    //complete all todos
+    cy.get("[data-cy-toggle-all").click({ force: true });
+  };
 });
