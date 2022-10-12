@@ -7,7 +7,7 @@ import {
   EDIT_TODO,
 } from "../contants/actionTypes";
 
-const initialState = {
+const initialState = (window.Cypress && window.initialState) || {
   todos: [],
 };
 

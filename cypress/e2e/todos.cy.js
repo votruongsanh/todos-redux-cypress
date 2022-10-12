@@ -21,16 +21,6 @@ const initialState = [
   },
 ];
 
-const visitWithInitialTodos = () => {
-  cy.visit("/", {
-    onBeforeLoad(win) {
-      console.log("win.initialState", win.initialState);
-      win.initialState = initialState;
-    },
-  });
-  // cy.get(".todo").as("todos");
-};
-
 describe("TodoMVC - React", () => {
   beforeEach(() => {
     cy.visit("/");
@@ -185,15 +175,17 @@ describe("TodoMVC - React", () => {
 });
 
 context("Mark all as completed", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    // cy.get(".todo").as("todos");
+  });
   //new command used here
-  const completeAll = () => {
-    //complete all todos
-    cy.get("[data-cy-toggle-all").click({ force: true });
-  };
-
-  beforeEach(visitWithInitialTodos);
+  // const completeAll = () => {
+  //   //complete all todos
+  //   cy.get("[data-cy-toggle-all]").click({ force: true });
+  // };
 
   it.only("should allow me to mark all items as completed", () => {
-    completeAll();
+    // cy.get("[data-cy-toggle-all]").click({ force: true });
   });
 });
