@@ -1,6 +1,8 @@
 describe("add Todos", () => {
+  beforeEach(() => {
+    cy.visit("/");
+  });
   it("input text", () => {
-    cy.visit("http://localhost:3000/");
     cy.get(".new-todo")
       .type("write code{enter}")
       .type("write test{enter}")
