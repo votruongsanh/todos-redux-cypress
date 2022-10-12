@@ -9,18 +9,6 @@ import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos = [] }) => {
   const filterCurrent = useSelector((state) => state.visibilityFilter);
-  // const todosList = () => {
-  //   switch (filterCurrent) {
-  //     case SHOW_ALL:
-  //       return todos;
-  //     case SHOW_COMPLETED:
-  //       return todos.filter((t) => t.completed);
-  //     case SHOW_ACTIVE:
-  //       return todos.filter((t) => !t.completed);
-  //     default:
-  //       throw new Error("Unknown filter: " + filterCurrent);
-  //   }
-  // };
 
   const todosList =
     filterCurrent === SHOW_ALL

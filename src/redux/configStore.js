@@ -1,19 +1,15 @@
 import { Provider } from "react-redux";
-import {
-  applyMiddleware,
-  combineReducers,
-  legacy_createStore as createStore,
-} from "redux";
+import { applyMiddleware, legacy_createStore as createStore } from "redux";
 import thunk from "redux-thunk";
-import todoReducer from "./reducer/todoReducer";
-import visibilityFilter from "./reducer/visibilityFilter";
+import rootReducer from "./reducer";
 
-const rootReducer = combineReducers({
-  todoReducer,
-  visibilityFilter,
-});
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export const StoreProvider = ({ children }) => (
   <Provider store={store}>{children}</Provider>
 );
+
+// expose store when run in Cypress
+if (window.Cypress) {
+  window.store = store;
+}
